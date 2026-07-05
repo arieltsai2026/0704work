@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Google x 桂格燕麥：行銷決策報告</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet"/>
+<style>
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --google-blue: #1a73e8;
+  --google-blue-hover: #1557b0;
+  --google-blue-light: #e8f0fe;
+  --google-red: #ea4335;
+  --google-red-light: #fce8e6;
+  --google-yellow: #fbbc05;
+  --google-yellow-light: #fef7e0;
+  --google-green: #34a853;
+  --google-green-light: #e6f4ea;
+  
+  --bg-color: #f8f9fa;
+  --card-bg: #ffffff;
+  
+  --text-primary: #202124;
+  --text-secondary: #5f6368;
+  --text-light: #80868b;
+  
+  --border-color: #dadce0;
+  --border-radius-lg: 16px;
+  --border-radius-md: 8px;
+  --border-radius-sm: 4px;
+  
+  --shadow-flat: 0 1px 2px 0 rgba(60,64,67,0.3), 0 1px 3px 1px rgba(60,64,67,0.15);
+  --shadow-hover: 0 1px 3px 0 rgba(60,64,67,0.3), 0 4px 8px 3px rgba(60,64,67,0.15);
+}
+
+body {
+  font-family: 'Outfit', 'Noto Sans TC', sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-primary);
+  line-height: 1.625;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+/* ── NAVBAR & HEADER ── */
+.navbar {
+  background-color: #ffffff;
+  border-bottom: 1px solid var(--border-color);
+  padding: 0.8rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 1px 2px 0 rgba(60,64,67,0.1);
+}
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.google-logo {
+  display: flex;
+  font-size: 1.4rem;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+.google-logo span:nth-child(1) { color: var(--google-blue); }
+.google-logo span:nth-child(2) { color: var(--google-red); }
+.google-logo span:nth-child(3) { color: var(--google-yellow); }
+.google-logo span:nth-child(4) { color: var(--google-blue); }
+.google-logo span:nth-child(5) { color: var(--google-green); }
+.google-logo span:nth-child(6) { color: var(--google-red); }
+
+.partner-logo {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  border-left: 1px solid var(--border-color);
+  padding-left: 8px;
+}
+
+.report-badge {
+  background-color: var(--google-blue-light);
+  color: var(--google-blue);
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 4px 12px;
+  border-radius: 100px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+header {
+  max-width: 1100px;
+  margin: 2.5rem auto 1rem;
+  padding: 0 1.5rem;
+}
+header h1 {
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  font-weight: 500;
+  color: var(--text-primary);
+  letter-spacing: -0.5px;
+  margin-bottom: 0.75rem;
+}
+header p {
+  color: var(--text-secondary);
+  font-size: 1.05rem;
+  max-width: 800px;
+}
+
+/* ── LAYOUT ── */
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 1.5rem 1.5rem 4rem;
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 2rem;
+}
+
+@media (max-width: 900px) {
+  .container {
+    grid-template-columns: 1fr;
+    padding: 1rem;
+  }
+  aside {
+    position: static !important;
+  }
+}
+
+/* ── SIDEBAR ── */
+aside {
+  position: sticky;
+  top: 5rem;
+  height: fit-content;
+}
+.nav-card {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-lg);
+  padding: 1.25rem;
+}
+.nav-card h2 {
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: var(--text-light);
+  margin-bottom: 0.75rem;
+}
+.nav-links {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.nav-links a {
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: all 0.15s ease-in-out;
+  display: block;
+  padding: 8px 12px;
+  border-radius: var(--border-radius-md);
+}
+.nav-links a:hover {
+  background-color: #f1f3f4;
+  color: var(--text-primary);
+}
+.nav-links a.active {
+  background-color: var(--google-blue-light);
+  color: var(--google-blue);
+  font-weight: 600;
+}
+
+/* ── MAIN CONTENT ── */
+main {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* ── STATS GRID ── */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+}
+.stat-card {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-lg);
+  padding: 1.25rem;
+  text-align: left;
+  position: relative;
+  overflow: hidden;
+}
+.stat-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+}
+.stat-card.blue::before { background-color: var(--google-blue); }
+.stat-card.green::before { background-color: var(--google-green); }
+.stat-card.yellow::before { background-color: var(--google-yellow); }
+.stat-card.red::before { background-color: var(--google-red); }
+
+.stat-card .value {
+  font-size: 2.2rem;
+  font-weight: 600;
+  letter-spacing: -1px;
+  line-height: 1.1;
+  margin-bottom: 4px;
+}
+.stat-card.blue .value { color: var(--google-blue); }
+.stat-card.green .value { color: var(--google-green); }
+.stat-card.yellow .value { color: var(--google-yellow); }
+.stat-card.red .value { color: var(--google-red); }
+
+.stat-card .label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+.stat-card .desc {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+}
+
+/* ── SECTION CARD ── */
+.sec-card {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-lg);
+  padding: 2rem;
+}
+.sec-title {
+  font-size: 1.4rem;
+  font-weight: 500;
+  margin-bottom: 1.5rem;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.sec-title::after {
+  content: '';
+  flex-grow: 1;
+  height: 1px;
+  background-color: var(--border-color);
+  margin-left: 10px;
+}
+
+/* ── THREE-TIER SECTIONS ── */
+.tier-box {
+  margin-bottom: 2rem;
+}
+.tier-box:last-child {
+  margin-bottom: 0;
+}
+.tier-header {
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  margin-bottom: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.tier-header.discovery { color: var(--google-blue); }
+.tier-header.insight { color: var(--google-green); }
+.tier-header.action { color: var(--google-yellow); }
+
+.tier-content ul {
+  list-style: none;
+}
+.tier-content li {
+  position: relative;
+  padding-left: 1.25rem;
+  margin-bottom: 0.75rem;
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+}
+.tier-content li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 8px;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+}
+.tier-header.discovery + .tier-content li::before { background-color: var(--google-blue); }
+.tier-header.insight + .tier-content li::before { background-color: var(--google-green); }
+.tier-header.action + .tier-content li::before { background-color: var(--google-yellow); }
+
+.tier-content strong {
+  color: var(--text-primary);
+  font-weight: 500;
+}
+.tier-content li ul {
+  margin-top: 6px;
+  margin-left: 8px;
+}
+.tier-content li ul li {
+  margin-bottom: 4px;
+  font-size: 0.9rem;
+}
+.tier-content li ul li::before {
+  background-color: var(--text-light) !important;
+}
+
+/* ── ALERT BOX ── */
+.alert-box {
+  background-color: var(--google-red-light);
+  border: 1px solid #fad2cf;
+  border-radius: var(--border-radius-md);
+  padding: 1.25rem;
+  margin-bottom: 1.5rem;
+  display: flex;
+  gap: 12px;
+}
+.alert-icon {
+  color: var(--google-red);
+  font-size: 1.3rem;
+  font-weight: bold;
+  line-height: 1;
+}
+.alert-content p {
+  font-size: 0.9rem;
+  color: var(--text-primary);
+}
+.alert-content strong {
+  color: var(--google-red);
+  font-weight: 600;
+}
+
+/* ── FLOWCHART ── */
+.flowchart {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--bg-color);
+  padding: 1.25rem;
+  border-radius: var(--border-radius-md);
+  border: 1px solid var(--border-color);
+  margin: 1.25rem 0;
+}
+@media (max-width: 768px) {
+  .flowchart {
+    flex-direction: column;
+    gap: 12px;
+  }
+  .flow-arrow {
+    transform: rotate(90deg);
+  }
+}
+.flow-step {
+  flex: 1;
+  background-color: #ffffff;
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-md);
+  padding: 0.75rem;
+  text-align: center;
+  box-shadow: 0 1px 2px 0 rgba(60,64,67,0.1);
+}
+.flow-step.highlight {
+  border-color: var(--google-blue);
+  background-color: var(--google-blue-light);
+}
+.flow-num {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--text-light);
+  margin-bottom: 2px;
+}
+.flow-step.highlight .flow-num {
+  color: var(--google-blue);
+}
+.flow-text {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+.flow-arrow {
+  color: var(--text-light);
+  font-weight: 300;
+  font-size: 1.2rem;
+  padding: 0 8px;
+}
+
+/* ── TABLE ── */
+.table-wrapper {
+  overflow-x: auto;
+  margin: 1.5rem 0;
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-md);
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+th, td {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--border-color);
+}
+th {
+  background-color: #f1f3f4;
+  color: var(--text-primary);
+  font-weight: 500;
+  font-size: 0.85rem;
+}
+td {
+  background-color: #ffffff;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+tr:last-child td {
+  border-bottom: none;
+}
+
+/* ── BUTTON ── */
+.btn-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 1.5rem;
+}
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--google-blue);
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  padding: 10px 24px;
+  border-radius: 100px;
+  transition: background-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  cursor: pointer;
+  border: none;
+  box-shadow: 0 1px 2px 0 rgba(60,64,67,0.3);
+}
+.btn:hover {
+  background-color: var(--google-blue-hover);
+  box-shadow: 0 1px 3px 0 rgba(60,64,67,0.3), 0 4px 8px 3px rgba(60,64,67,0.15);
+}
+.btn-flat {
+  background-color: transparent;
+  color: var(--google-blue);
+  box-shadow: none;
+}
+.btn-flat:hover {
+  background-color: var(--google-blue-light);
+  box-shadow: none;
+}
+</style>
+</head>
+<body>
+
+<!-- ── GOOGLE STYLE NAVBAR ── -->
+<div class="navbar">
+  <div class="logo-container">
+    <div class="google-logo">
+      <span>G</span><span>o</span><span>o</span><span>g</span><span>l</span><span>e</span>
+    </div>
+    <div class="partner-logo">佳格食品合作提案</div>
+  </div>
+  <div class="report-badge">Executive Summary</div>
+</div>
+
+<header>
+  <h1>桂格燕麥 x Google 數位整合與搜尋優化決策報告</h1>
+  <p>本報告專為行銷主管制定行銷策略決策設計。整合簡報核心行銷與技術規劃，並以「核心發現」、「數據洞察」與「行動建議」之三層架構呈現。</p>
+</header>
+
+<div class="container">
+  <!-- ── SIDEBAR NAVIGATION ── -->
+  <aside>
+    <div class="nav-card">
+      <h2>📊 報告大綱</h2>
+      <ul class="nav-links">
+        <li><a href="#video-strategy" class="active">1. 影音廣告與品牌提升</a></li>
+        <li><a href="#search-solution">2. 搜尋廣告解決方案</a></li>
+        <li><a href="#serpo-strategy">3. 搜尋結果優化 (SERPO)</a></li>
+        <li><a href="#jbp-partnership">4. Google x 佳格聯合計畫</a></li>
+        <li><a href="index.html" class="btn-flat" style="margin-top: 10px; border: 1px solid var(--border-color); text-align: center;">返回個人首頁</a></li>
+      </ul>
+    </div>
+  </aside>
+
+  <main>
+    <!-- ── EXECUTIVE STATS GRID ── -->
+    <section>
+      <div class="stats-grid">
+        <div class="stat-card blue">
+          <div class="value">8s</div>
+          <div class="label">注意力瓶頸</div>
+          <div class="desc">手機平均注意力時間</div>
+        </div>
+        <div class="stat-card green">
+          <div class="value">90%</div>
+          <div class="label">Bumper Ads 效益</div>
+          <div class="desc">顯著提升品牌印象</div>
+        </div>
+        <div class="stat-card yellow">
+          <div class="value">91.8%</div>
+          <div class="label">25-34歲提升度</div>
+          <div class="desc">Brand Lift 最優年齡層</div>
+        </div>
+        <div class="stat-card red">
+          <div class="value">~50%</div>
+          <div class="label">首頁負面內容</div>
+          <div class="desc">優化前搜尋結果負評佔比</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── SECTION 1 ── -->
+    <section id="video-strategy" class="sec-card">
+      <h2 class="sec-title">🎬 影音廣告與品牌提升策略 (Video & Brand Lift Strategy)</h2>
+      
+      <div class="tier-box">
+        <div class="tier-header discovery">💡 核心發現</div>
+        <div class="tier-content">
+          <ul>
+            <li><strong>注意力碎片化與格式互補</strong>：手機用戶專注時間極短，必須利用 6秒 <strong>Bumper Ads</strong> 作為 <strong>TrueView 廣告</strong>的最佳互補。</li>
+            <li><strong>影音廣告序列化投放 (Ad Format Sequence)</strong>：利用預告 (Tease)、故事性放大 (Amplify) 及防疲勞 (Echo) 的序列組合投放，優化用戶旅程並降低創意疲勞。</li>
+            <li><strong>行銷實驗控制變數</strong>：影音廣告成效取決於「目標受眾」、「客製化程度」及「廣告長度」三大核心變數，並結合 <strong>Brand Lift Survey (BLS)</strong> 進行實證。</li>
+            <li><strong>品牌指標量化評估</strong>：利用科學化調查工具量化分析上漏斗至下漏斗指標，評估受眾特徵與接觸頻次的實質提升成效。</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="tier-box">
+        <div class="tier-header insight">📈 數據洞察</div>
+        <div class="tier-content">
+          <ul>
+            <li><strong>8秒注意力限制</strong>：消費者在手機上的平均注意力僅有 <strong>8 seconds</strong>。</li>
+            <li><strong>Bumper 印象拉抬</strong>：<strong>每 10 個 Bumper Ads 中，就有 9 個</strong>能顯著加深品牌印象 (Ad Recall)。</li>
+            <li><strong>YouTube 資訊力優勢</strong>：YouTube 造訪動機中 **21% 旨在研究品牌與產品資訊**，電視僅為 **8%**。此外，YouTube 可覆蓋 **51%** 電視非/輕度使用者 (TV Light/Non-users，佔台灣總人口 33%)。</li>
+            <li><strong>典型影音案例經驗</strong>：
+              <ul>
+                <li>*Tide*：利用 Bumper Ads 提醒所有使用產品的時機點。</li>
+                <li>*桂格燕麥*：利用故事性 TrueView 串連學校生活互動。</li>
+                <li>*Pepsi*：TrueView 後接續 Bumper，以短秒數強化訊息多樣性。</li>
+                <li>*麥當勞*：在 Bumper 中運用 **5" tag on** 字卡。</li>
+                <li>*Uber Eats*：將 30 秒主影片延伸為多款 6 秒短影音，提升品牌印象。</li>
+                <li>*SilkAir*：將 Print 平面訊息延伸轉化為 5 秒影音。</li>
+              </ul>
+            </li>
+            <li><strong>Brand Lift 受眾年齡差異</strong>：整體 Ad Recall 提升 **70.0%**（同類最佳）。在各年齡層中，**25-34 歲受眾相對提升幅度最高，達 91.8%**；18-24 歲提升 64.3%，35-44 歲提升 67.2%；而 **45-54 歲與 65 歲以上受眾則顯示為「沒有提升」**。</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="tier-box">
+        <div class="tier-header action">🎯 行動建議</div>
+        <div class="tier-content">
+          <ul>
+            <li><strong>部署廣告序列組合</strong>：針對核心轉換受眾採取 `Bumper` → `TrueView (view)` → `TrueView` 序列；對跳過長影音者追加 `TrueView (skip)` → `Bumper`，確保基本覆蓋率。</li>
+            <li><strong>調整預算與受眾定位</strong>：預算優先向 **18-44 歲**（特別是 **25-34 歲**）高提升度受眾傾斜；針對 **45 歲以上** 顯示「沒有提升」的群體，應調整素材切入點或降低預算權重。</li>
+            <li><strong>執行影音實驗框架</strong>：控制「相似興趣 + 行為」目標受眾、配置「單一或系列影片」客製化程度、調整「長/短秒數」廣告長度，並利用 **BLS** 進行 A/B Test 驗證。</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── SECTION 2 ── -->
+    <section id="search-solution" class="sec-card">
+      <h2 class="sec-title">🔍 搜尋廣告解決方案 (Search Ads Solution)</h2>
+      
+      <div class="tier-box">
+        <div class="tier-header discovery">💡 核心發現</div>
+        <div class="tier-content">
+          <ul>
+            <li><strong>多層次搜尋覆蓋策略</strong>：依據消費者搜尋意圖（品牌、產品、通用需求），分層規劃預算與佔有率目標。</li>
+            <li><strong>廣告評級與版面最大化</strong>：透過關鍵字文案高關聯性的優化，以及擴充資訊的配置，最大化搜尋結果版面與點擊率。</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="tier-box">
+        <div class="tier-header insight">📈 數據洞察</div>
+        <div class="tier-content">
+          <ul>
+            <li><strong>Co-search 需求分析</strong>：
+              <ul>
+                <li>消費者搜尋「桂格麥片」時，最常關聯 **減肥**、**料理**、**食譜**、**營養**。</li>
+                <li>搜尋「燕麥」時，最常關聯 **功效**、**吃法**、**哪裡買**。</li>
+              </ul>
+            </li>
+            <li><strong>SOV 與覆蓋率目標</strong>：
+              <ul>
+                <li><strong>Brand ("桂格燕麥")</strong>：定位為 **Must win battle**，目標設定 **80% SOV**（關鍵字覆蓋率 100%）。</li>
+                <li><strong>Product ("燕麥片/即時燕麥")</strong>：目標設定 **60% SOV**。</li>
+                <li><strong>Consumer Interests ("體塑身/健康/食譜")</strong>：定位為 **Nice to have**，目標設定 **30% SOV**。</li>
+              </ul>
+            </li>
+            <li><strong>廣告格式效益</strong>：搜尋字詞若出現在標題與文案中，**平均可提升 CTR 68%**。啟用 **Sitelink Extension**，**平均可提升 CTR 10% ~ 20%**；啟用 **Callout Extension**，**平均可提升 CTR 約 10%**。</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="tier-box">
+        <div class="tier-header action">🎯 行動建議</div>
+        <div class="tier-content">
+          <ul>
+            <li><strong>執行帳戶架構與預算配置</strong>：</li>
+          </ul>
+          <div class="table-wrapper">
+            <table>
+              <thead>
+                <tr>
+                  <th>廣告活動類型</th>
+                  <th>廣告群組範例</th>
+                  <th>建議預算規模</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>品牌字 (Brand)</strong></td>
+                  <td>桂格燕麥、桂格燕麥片、桂格大燕麥片</td>
+                  <td>NT$ 2,500+ / day</td>
+                </tr>
+                <tr>
+                  <td><strong>商品/種類字 (Product)</strong></td>
+                  <td>穀粉、即食燕麥片、大燕麥片、三合一麥片、北海道麥片、穀珍</td>
+                  <td>NT$ 3,000+ / day</td>
+                </tr>
+                <tr>
+                  <td><strong>消費者需求通用字 (Consumer Interests)</strong></td>
+                  <td>塑身、吃法、食譜、健康相關</td>
+                  <td>NT$ 4,000+ / day</td>
+                </tr>
+                <tr>
+                  <td><strong>競品字 (Competitor)</strong></td>
+                  <td>競爭品牌名稱</td>
+                  <td>NT$ 500+ / day</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <ul>
+            <li><strong>落實擴充資訊最佳做法</strong>：設定**至少 8 則 Sitelink** 供系統自動優化，並為 Mobile 獨立優化與增加描述；設定**至少 8 則 Callout** 進行自動化輪播。</li>
+            <li><strong>執行 Search Action Plan</strong>：重整字詞架構 → 決定 SOV 目標 → 準備關鍵字建議書與估算預算 → 每週檢視搜尋字詞報表，並維持 3 則廣告輪替與額外資訊做滿。</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── SECTION 3 ── -->
+    <section id="serpo-strategy" class="sec-card">
+      <h2 class="sec-title">🛡️ 搜尋結果頁面優化策略 (SERP Optimization, SERPO)</h2>
+      
+      <div class="alert-box">
+        <div class="alert-icon">⚠️</div>
+        <div class="alert-content">
+          <p><strong>品牌信譽危機挑戰</strong>：搜尋關鍵字「桂格燕麥」時，**第 4 個自然搜尋結果即為農藥殘留事件負面新聞**；且前 2 頁搜尋結果中，**將近 50% 為負面內容**，嚴重影響消費信心與品牌形象。</p>
+        </div>
+      </div>
+
+      <div class="tier-box">
+        <div class="tier-header discovery">💡 核心發現</div>
+        <div class="tier-content">
+          <ul>
+            <li><strong>反制排擠原理</strong>：自然搜尋結果無法手動刪除，必須藉由正向新內容的流量與演算法權重提升，將負面內容排名往後推擠。</li>
+            <li><strong>SERPO 四部曲防禦機制</strong>：透過「找出負評 → 規劃新內容 → 雙軌流量導入 → 排名取代」四步驟完成防禦。</li>
+            <li><strong>行銷漏斗整合</strong>：結合自然與付費流量，從 Acquisition、Activation 到 Referral/Influence 全面覆蓋消費者的行為漏斗，確保最終 Revenue。</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="tier-box">
+        <div class="tier-header insight">📈 數據洞察</div>
+        <div class="tier-content">
+          <ul>
+            <li><strong>流量與渠道細分</strong>：
+              <ul>
+                <li><strong>Organic Traffic (自然流量)</strong>：包含桌機與手機的 `Search` (搜尋)、`Referral` (轉介)。</li>
+                <li><strong>Paid Traffic (付費流量)</strong>：包含桌機與手機的 `Direct` (直接流量)、`Social` (社群)。</li>
+              </ul>
+            </li>
+            <li><strong>操作前後成效對照</strong>：成功以東森新聞正面報導「全新升級桂格燕麥」與「一休減重診斷室」部落格文章取代原有排名，使負評連結移出前兩頁。</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="tier-box">
+        <div class="tier-header action">🎯 行動建議</div>
+        <div class="tier-content">
+          <ul>
+            <li><strong>委託專業代理商 (CheerClick) 操作</strong>：評估利用 CheerClick 具有 Google VIP 優化經驗、專業 SEO/ASO 團隊及廣告專屬工程師之優勢，執行 SERPO 專案。</li>
+            <li><strong>落實四步驟 SERPO 操作流程</strong>：</li>
+          </ul>
+          
+          <div class="flowchart">
+            <div class="flow-step">
+              <div class="flow-num">Step 1</div>
+              <div class="flow-text">找出負評網址</div>
+            </div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-step">
+              <div class="flow-num">Step 2</div>
+              <div class="flow-text">規劃正面內容</div>
+            </div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-step">
+              <div class="flow-num">Step 3</div>
+              <div class="flow-text">雙軌流量導入</div>
+            </div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-step highlight">
+              <div class="flow-num">Step 4</div>
+              <div class="flow-text">排名取代推擠</div>
+            </div>
+          </div>
+          
+          <ul>
+            <li><strong>雙軌流量導入執行細則</strong>：
+              <ul>
+                <li><strong>自然流量</strong>：優化正面內容之網頁 SEO 結構與 Referral 連結。</li>
+                <li><strong>付費流量</strong>：透過 Social 廣告與 Direct 管道導流至正面內容，為其灌注流量。</li>
+              </ul>
+            </li>
+            <li><strong>排名推擠</strong>：利用流量加速提升正面內容排名，強迫負評退至第二頁以後，確保商機不流失。</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── SECTION 4 ── -->
+    <section id="jbp-partnership" class="sec-card">
+      <h2 class="sec-title">🤝 Google x 佳格食品聯合商業計畫 (JBP)</h2>
+      
+      <div class="tier-box">
+        <div class="tier-header discovery">💡 核心發現</div>
+        <div class="tier-content">
+          <ul>
+            <li><strong>戰略夥伴協同成長</strong>：透過 Google 與佳格食品的 Joint Business Plan (JBP)，結合 Google 的數據力與佳格的產品力，達成全面性的數位轉型與能力建設。</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="tier-box">
+        <div class="tier-header insight">📈 數據洞察</div>
+        <div class="tier-content">
+          <ul>
+            <li><strong>受眾興趣多元性 (Diverse & Not-Siloed)</strong>：消費者興趣並非單一。例如「速食愛好者 (Fast Food Cravers)」與「食譜 (Recipes)」受眾在電影、運動、音樂等興趣上有高度重疊，媒體定位必須多元覆蓋，避免單一思維。</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="tier-box">
+        <div class="tier-header action">🎯 行動建議</div>
+        <div class="tier-content">
+          <ul>
+            <li><strong>推動 JBP 四大合作面向</strong>：
+              <ol style="margin-left: 1.5rem; margin-top: 0.5rem; color: var(--text-secondary); font-size: 0.95rem;">
+                <li style="margin-bottom: 6px;"><strong>Insights & Measurement (洞察與衡量)</strong>：導入 FMCG 市場趨勢洞察，建置搜尋框架與廣告成效衡量機制。</li>
+                <li style="margin-bottom: 6px;"><strong>Capability Building (能力建設)</strong>：推動 Google 影音解決方案 (OTV 1.0 - 3.0)、Search 101 工作坊及 Human story 2.0 受眾工作坊。</li>
+                <li style="margin-bottom: 6px;"><strong>Targeting & Media Strategy (定位與媒體策略)</strong>：對 1~2 個主要品牌提供核心廣告活動支援與諮詢。</li>
+                <li style="margin-bottom: 6px;"><strong>Creative Collaboration (創意合作)</strong>：共同開發具備高品牌提升力的廣告創意素材。</li>
+              </ol>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── FOOTER BUTTON ── -->
+    <div class="btn-container">
+      <a href="index.html" class="btn">⬅️ 返回首頁 (Ariel Tsai 網頁)</a>
+    </div>
+  </main>
+</div>
+
+<script>
+// Simple scroll spy to highlight active sidebar link
+window.addEventListener('DOMContentLoaded', () => {
+  const links = document.querySelectorAll('.nav-links a:not(.btn-flat)');
+  const sections = document.querySelectorAll('section[id]');
+  
+  window.addEventListener('scroll', () => {
+    let currentId = '';
+    sections.forEach(sec => {
+      const top = sec.offsetTop - 120;
+      if (window.scrollY >= top) {
+        currentId = sec.getAttribute('id');
+      }
+    });
+    
+    links.forEach(link => {
+      link.classList.remove('active');
+      if (link.getAttribute('href') === `#${currentId}`) {
+        link.classList.add('active');
+      }
+    });
+  });
+});
+</script>
+</body>
+</html>
